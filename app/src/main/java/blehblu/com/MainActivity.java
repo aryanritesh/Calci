@@ -180,7 +180,10 @@ public class MainActivity extends AppCompatActivity {
                     else if(status=="subtraction"){
                         minus();
                     }
-                    else{
+                    else if (status == "percent") {
+                        percent();
+                    }
+                    else {
                         add();
                     }
                     }
@@ -207,6 +210,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else if(status=="sum"){
                         add();
+                    }
+                    else if (status == "percent") {
+                        percent();
                     }
                     else{
                         minus();
@@ -235,6 +241,9 @@ public class MainActivity extends AppCompatActivity {
                  else if(status=="subtraction"){
                      minus();
                  }
+                 else if (status == "percent") {
+                     percent();
+                 }
                  else{
                      mul();
                  }
@@ -261,6 +270,9 @@ public class MainActivity extends AppCompatActivity {
                     else if(status=="subtraction"){
                         minus();
                     }
+                    else if (status == "percent") {
+                        percent();
+                    }
                     else{
                         div();
                     }
@@ -274,6 +286,27 @@ public class MainActivity extends AppCompatActivity {
         percent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                old=history.getText().toString();
+                current=result.getText().toString();
+                history.setText(old+current+"%");
+                if(status=="sum"){
+                    add();
+                }
+                else if(status=="subtraction"){
+                    minus();
+                }
+                else if(status=="multiplication"){
+                    mul();
+                }
+                else if(status=="division"){
+                    div();
+                }
+                else{
+                    percent();
+                }
+                status="percent";
+                operator=false;
+                number=null;
 
             }
         });
@@ -309,6 +342,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else if(status=="division"){
                         div();
+                    }
+                    else if (status == "percent") {
+                        percent();
                     }
                     else{
                         num1=Double.parseDouble(result.getText().toString());
@@ -382,6 +418,13 @@ public class MainActivity extends AppCompatActivity {
             num2=Double.parseDouble(result.getText().toString());
             num1=num1/num2;
         }
+        result.setText(formatter.format(num1));
+        dott=true;
+    }
+
+    public void percent(){
+        num2=Double.parseDouble(result.getText().toString());
+        num1=num2/100;
         result.setText(formatter.format(num1));
         dott=true;
     }
