@@ -156,11 +156,16 @@ public class MainActivity extends AppCompatActivity {
                 else if(number.contains(".")){
                     dott=false;
                 }
+
                 else{
                     dott=true;
                 }
-                result.setText(number);}
-
+                result.setText(number);
+                if(number.length()==0){
+                result.setText("0");
+                }
+                }
+                status="del";
             }
         });
 
@@ -330,6 +335,10 @@ public class MainActivity extends AppCompatActivity {
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                old=history.getText().toString();
+                current=result.getText().toString();
+                history.setText(old+current+"");
+                del.setClickable(false);
                 if(operator){
                     if(status=="sum"){
                         add();
