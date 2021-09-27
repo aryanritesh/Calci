@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
  boolean acStatus=true;
  boolean equalStatus=false;
  boolean addStatus=true;
+ boolean minusStatus= true;
+ boolean multiStatus=true;
+ boolean divStatus=true;
+ boolean percentStatus=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,6 +189,26 @@ public class MainActivity extends AppCompatActivity {
                 divide.setClickable(true);
                 del.setClickable(false);
                 addStatus=true;
+                if (minusStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
+                if (divStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
+                if (multiStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
+                if (percentStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
                 if(operator){
                     if (status == "multiplication") {
                         mul();
@@ -205,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
                 status="sum";
                 operator=false;
                 number=null;
+                addStatus=true;
                 }
 
         });
@@ -221,6 +246,26 @@ public class MainActivity extends AppCompatActivity {
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"-");
+                if (addStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"-");
+                }
+                if (multiStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"-");
+                }
+                if (divStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"-");
+                }
+                if (percentStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"-");
+                }
                 if(operator){
 
                     if(status=="multiplication"){
@@ -243,6 +288,8 @@ public class MainActivity extends AppCompatActivity {
                 status="subtraction";
                 operator=false;
                 number=null;
+                minusStatus=true;
+
             }
         });
 
@@ -258,6 +305,26 @@ public class MainActivity extends AppCompatActivity {
                 multi.setClickable(false);
                 divide.setClickable(true);
                 del.setClickable(false);
+                if (addStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"x");
+                }
+                if (minusStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"x");
+                }
+                if (divStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"x");
+                }
+                if (percentStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"x");
+                }
              if(operator){
                  if(status=="sum"){
                      add();
@@ -278,6 +345,7 @@ public class MainActivity extends AppCompatActivity {
              status="multiplication";
              operator=false;
              number=null;
+             multiStatus=true;
             }
         });
 
@@ -293,6 +361,26 @@ public class MainActivity extends AppCompatActivity {
                 multi.setClickable(true);
                 divide.setClickable(false);
                 del.setClickable(false);
+                if (addStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"/");
+                }
+                if (minusStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"/");
+                }
+                if (multiStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"/");
+                }
+                if (percentStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"/");
+                }
                 if(operator){
                     if(status=="multiplication"){
                         mul();
@@ -313,6 +401,7 @@ public class MainActivity extends AppCompatActivity {
                  status="division";
                 operator=false;
                 number=null;
+                divStatus=true;
             }
         });
 
@@ -328,6 +417,26 @@ public class MainActivity extends AppCompatActivity {
                 multi.setClickable(true);
                 divide.setClickable(true);
                 del.setClickable(false);
+                if (addStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"%");
+                }
+                if (addStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"%");
+                }
+                if (multiStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"%");
+                }
+                if (divStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"%");
+                }
                 if(status=="sum"){
                     add();
                 }
@@ -346,6 +455,7 @@ public class MainActivity extends AppCompatActivity {
                 status="percent";
                 operator=false;
                 number=null;
+                percentStatus=true;
 
             }
         });
@@ -376,6 +486,7 @@ public class MainActivity extends AppCompatActivity {
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"");
+                history.setText("");
                 del.setClickable(false);
                 equal.setClickable(false);
                 add.setClickable(true);
