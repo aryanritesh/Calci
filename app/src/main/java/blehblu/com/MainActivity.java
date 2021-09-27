@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
  boolean dott =true;
  boolean acStatus=true;
  boolean equalStatus=false;
+ boolean addStatus=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,12 +140,14 @@ public class MainActivity extends AppCompatActivity {
              num2=0;
              dott=true;
              acStatus=true;
+             equal.setClickable(true);
             }
         });
 
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(acStatus){
                     result.setText("0");
                 }
@@ -172,9 +175,16 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                equal.setClickable(true);
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"+");
+                add.setClickable(false);
+                minus.setClickable(true);
+                multi.setClickable(true);
+                divide.setClickable(true);
+                del.setClickable(false);
+                addStatus=true;
                 if(operator){
                     if (status == "multiplication") {
                         mul();
@@ -202,6 +212,12 @@ public class MainActivity extends AppCompatActivity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                equal.setClickable(true);
+                add.setClickable(true);
+                minus.setClickable(false);
+                multi.setClickable(true);
+                divide.setClickable(true);
+                del.setClickable(false);
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"-");
@@ -233,9 +249,15 @@ public class MainActivity extends AppCompatActivity {
         multi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                equal.setClickable(true);
+                add.setClickable(true);
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"x");
+                minus.setClickable(true);
+                multi.setClickable(false);
+                divide.setClickable(true);
+                del.setClickable(false);
              if(operator){
                  if(status=="sum"){
                      add();
@@ -262,9 +284,15 @@ public class MainActivity extends AppCompatActivity {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                equal.setClickable(true);
+                add.setClickable(true);
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"/");
+                minus.setClickable(true);
+                multi.setClickable(true);
+                divide.setClickable(false);
+                del.setClickable(false);
                 if(operator){
                     if(status=="multiplication"){
                         mul();
@@ -294,6 +322,12 @@ public class MainActivity extends AppCompatActivity {
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"%");
+                equal.setClickable(true);
+                add.setClickable(true);
+                minus.setClickable(true);
+                multi.setClickable(true);
+                divide.setClickable(true);
+                del.setClickable(false);
                 if(status=="sum"){
                     add();
                 }
@@ -319,6 +353,10 @@ public class MainActivity extends AppCompatActivity {
         dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                add.setClickable(true);
+                minus.setClickable(true);
+                multi.setClickable(true);
+                divide.setClickable(true);
                 if (dott) {
                     if (number == null) {
                         number = "0.";
@@ -339,6 +377,11 @@ public class MainActivity extends AppCompatActivity {
                 current=result.getText().toString();
                 history.setText(old+current+"");
                 del.setClickable(false);
+                equal.setClickable(false);
+                add.setClickable(true);
+                minus.setClickable(true);
+                multi.setClickable(true);
+                divide.setClickable(true);
                 if(operator){
                     if(status=="sum"){
                         add();
@@ -357,6 +400,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else{
                         num1=Double.parseDouble(result.getText().toString());
+
                     }
                 }
                  operator=false;
@@ -373,6 +417,7 @@ public class MainActivity extends AppCompatActivity {
             num1=0;
             num2=0;
             number=view;
+
         }
         else{
             number=number+view;
@@ -381,7 +426,12 @@ public class MainActivity extends AppCompatActivity {
         operator=true;
         acStatus=false;
         del.setClickable(true);
+        equal.setClickable(true);
         equalStatus=false;
+        add.setClickable(true);
+        minus.setClickable(true);
+        multi.setClickable(true);
+        divide.setClickable(true);
     }
     public void add(){
         num2= Double.parseDouble(result.getText().toString());
