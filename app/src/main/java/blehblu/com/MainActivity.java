@@ -189,26 +189,6 @@ public class MainActivity extends AppCompatActivity {
                 divide.setClickable(true);
                 del.setClickable(false);
                 addStatus=true;
-                if (minusStatus) {
-                    history.setText("");
-                    current=result.getText().toString();
-                    history.setText(current+"+");
-                }
-                if (divStatus) {
-                    history.setText("");
-                    current=result.getText().toString();
-                    history.setText(current+"+");
-                }
-                if (multiStatus) {
-                    history.setText("");
-                    current=result.getText().toString();
-                    history.setText(current+"+");
-                }
-                if (percentStatus) {
-                    history.setText("");
-                    current=result.getText().toString();
-                    history.setText(current+"+");
-                }
                 if(operator){
                     if (status == "multiplication") {
                         mul();
@@ -226,6 +206,26 @@ public class MainActivity extends AppCompatActivity {
                         add();
                     }
                     }
+                if (minusStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
+                else if (divStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
+                else if (multiStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
+                else if (percentStatus) {
+                    history.setText("");
+                    current=result.getText().toString();
+                    history.setText(current+"+");
+                }
                 status="sum";
                 operator=false;
                 number=null;
@@ -246,6 +246,24 @@ public class MainActivity extends AppCompatActivity {
                 old=history.getText().toString();
                 current=result.getText().toString();
                 history.setText(old+current+"-");
+                if(operator){
+
+                    if(status=="multiplication"){
+                        mul();
+                    }
+                    else if(status=="division"){
+                        div();
+                    }
+                    else if(status=="sum"){
+                        add();
+                    }
+                    else if (status == "percent") {
+                        percent();
+                    }
+                    else{
+                        minus();
+                    }
+                }
                 if (addStatus) {
                     history.setText("");
                     current=result.getText().toString();
@@ -265,25 +283,6 @@ public class MainActivity extends AppCompatActivity {
                     history.setText("");
                     current=result.getText().toString();
                     history.setText(current+"-");
-                }
-                if(operator){
-
-                    if(status=="multiplication"){
-                        mul();
-                    }
-                    else if(status=="division"){
-                        div();
-                    }
-                    else if(status=="sum"){
-                        add();
-                    }
-                    else if (status == "percent") {
-                        percent();
-                    }
-                    else{
-                        minus();
-                    }
-
                 }
                 status="subtraction";
                 operator=false;
@@ -305,6 +304,23 @@ public class MainActivity extends AppCompatActivity {
                 multi.setClickable(false);
                 divide.setClickable(true);
                 del.setClickable(false);
+             if(operator){
+                 if(status=="sum"){
+                     add();
+                 }
+                 else if(status=="division"){
+                     div();
+                 }
+                 else if(status=="subtraction"){
+                     minus();
+                 }
+                 else if (status == "percent") {
+                     percent();
+                 }
+                 else{
+                     mul();
+                 }
+             }
                 if (addStatus) {
                     history.setText("");
                     current=result.getText().toString();
@@ -325,23 +341,6 @@ public class MainActivity extends AppCompatActivity {
                     current=result.getText().toString();
                     history.setText(current+"x");
                 }
-             if(operator){
-                 if(status=="sum"){
-                     add();
-                 }
-                 else if(status=="division"){
-                     div();
-                 }
-                 else if(status=="subtraction"){
-                     minus();
-                 }
-                 else if (status == "percent") {
-                     percent();
-                 }
-                 else{
-                     mul();
-                 }
-             }
              status="multiplication";
              operator=false;
              number=null;
@@ -361,6 +360,23 @@ public class MainActivity extends AppCompatActivity {
                 multi.setClickable(true);
                 divide.setClickable(false);
                 del.setClickable(false);
+                if(operator){
+                    if(status=="multiplication"){
+                        mul();
+                    }
+                    else if(status=="sum"){
+                        add();
+                    }
+                    else if(status=="subtraction"){
+                        minus();
+                    }
+                    else if (status == "percent") {
+                        percent();
+                    }
+                    else{
+                        div();
+                    }
+                }
                 if (addStatus) {
                     history.setText("");
                     current=result.getText().toString();
@@ -380,23 +396,6 @@ public class MainActivity extends AppCompatActivity {
                     history.setText("");
                     current=result.getText().toString();
                     history.setText(current+"/");
-                }
-                if(operator){
-                    if(status=="multiplication"){
-                        mul();
-                    }
-                    else if(status=="sum"){
-                        add();
-                    }
-                    else if(status=="subtraction"){
-                        minus();
-                    }
-                    else if (status == "percent") {
-                        percent();
-                    }
-                    else{
-                        div();
-                    }
                 }
                  status="division";
                 operator=false;
@@ -467,6 +466,7 @@ public class MainActivity extends AppCompatActivity {
                 minus.setClickable(true);
                 multi.setClickable(true);
                 divide.setClickable(true);
+                del.setClickable(true);
                 if (dott) {
                     if (number == null) {
                         number = "0.";
@@ -511,7 +511,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else{
                         num1=Double.parseDouble(result.getText().toString());
-
                     }
                 }
                  operator=false;
@@ -528,7 +527,6 @@ public class MainActivity extends AppCompatActivity {
             num1=0;
             num2=0;
             number=view;
-
         }
         else{
             number=number+view;
@@ -554,7 +552,7 @@ public class MainActivity extends AppCompatActivity {
     public void minus(){
         if(num1==0){
             num1=Double.parseDouble(result.getText().toString());
-
+            num1=-num1;
         }
         else{
             num2=Double.parseDouble(result.getText().toString());
